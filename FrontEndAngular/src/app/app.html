@@ -1,0 +1,20 @@
+<body>
+  <div class="d-flex">
+    <nav id="sidebar" class="position-fixed p-3 bg-light text-dark vh-100" style="width: 20%">
+      <h4 class="text-dark mb-4 text-center">Things To Get Done!</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="to-do-list">To Do List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="add-task">Add Task</a>
+        </li>
+        <!-- add sidebar link for completed tasks -->
+      </ul>
+    </nav>
+
+    <div class="flex-grow-1 p-4" style="margin-left: 20%">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</body>

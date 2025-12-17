@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <h2 class="mb-3">To-Do List</h2>
+  <table class="table align-middle">
+    <thead class="table-light">
+      <tr>
+        <th class="text-center" style="width: 5%"></th>
+        <th style="width: 10%">Priority</th>
+        <th style="width: 60%">Task</th>
+        <th style="width: 10%">Due Date</th>
+        <th style="width: 15%">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of items; track $index) {
+      <tr [ngStyle]="{ 'text-decoration': item.completed ? 'line-through' : 'none' }">
+        <td>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="item.completed"
+            (ngModelChange)="updateCompletedTask(item)"
+          />
+          <!-- add a confirm for moving a completed task to completed tasks list and add date completed -->
+        </td>
+
+        <th>{{ item.priority }}</th>
+        <td>{{ item.task }}</td>
+        <td>{{ item.dueDate | date : 'shortDate' }}</td>
+        <td>
+          <button [routerLink]="['/update-task', item.id]" class="btn btn-primary btn-sm m-1">
+            Edit
+          </button>
+          <button (click)="deleteItem(item.id)" class="btn btn-danger btn-sm m-1">Delete</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

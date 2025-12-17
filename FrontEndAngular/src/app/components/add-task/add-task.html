@@ -1,0 +1,49 @@
+<div class="container mt-4">
+  <h2 class="mb-3">Add Task</h2>
+  <!-- update to FormControl and use validators and require fields for priority and due date. Add max chars for task -->
+  <form [formGroup]="userForm">
+    <div class="form-group">
+      <label for="toDoItem">To-Do Item</label>
+      <input
+        type="text"
+        class="form-control"
+        name="toDoItem"
+        formControlName="task"
+        id="toDoItem"
+        placeholder="Enter task"
+        required
+        maxlength="100"
+      />
+      <p class="text-muted">Maximum 100 characters.</p>
+    </div>
+    <div class="form-group">
+      <label for="selectPriority">Priority</label>
+      <select
+        class="form-control"
+        placeholder="Select Priority"
+        name="selectPriority"
+        formControlName="priority"
+        id="selectPriority"
+        required
+      >
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+      </select>
+      <div class="form-group mt-2">
+        <label for="dueDate">Due Date</label>
+        <input
+          type="date"
+          class="form-control"
+          name="dueDate"
+          formControlName="dueDate"
+          id="dueDate"
+          required
+          [min]="today"
+        />
+      </div>
+    </div>
+
+    <button type="submit" (click)="addTask()" class="btn btn-primary mt-2">Add Task</button>
+  </form>
+</div>
