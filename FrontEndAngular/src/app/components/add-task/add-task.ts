@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Item } from '../../models/item.model';
+import { Component } from '@angular/core';
 import { ItemService } from '../../services/item';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
 })
-export class AddTask implements OnInit {
+export class AddTask {
   constructor(private itemService: ItemService,
     private router: Router
   ) {};
@@ -37,8 +36,5 @@ export class AddTask implements OnInit {
     })
   };
   
-  ngOnInit(): void {
-    console.log(this.userForm.value);
-  };
   
 };

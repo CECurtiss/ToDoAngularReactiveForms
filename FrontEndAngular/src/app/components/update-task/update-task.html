@@ -1,15 +1,14 @@
 <div class="container mt-4">
   <h2 class="mb-3">Update Task</h2>
-  @if(item) {
   <!-- update to FormControl and use validators -->
-  <form>
+  <form [formGroup]="userForm">
     <div class="form-group">
       <label for="toDoItem">To-Do Item</label>
       <input
         type="text"
         class="form-control"
         name="toDoItem"
-        [(ngModel)]="item.task"
+        formControlName="task"
         id="toDoItem"
         placeholder="Enter task"
         required
@@ -21,8 +20,7 @@
         class="form-control"
         placeholder="Select Priority"
         name="selectPriority"
-        [(ngModel)]="item.priority"
-        id="selectPriority"
+        formControlName="priority"
       >
         <option>Low</option>
         <option>Medium</option>
@@ -35,24 +33,14 @@
           type="date"
           class="form-control"
           name="dueDate"
-          [(ngModel)]="item.dueDate"
+          formControlName="dueDate"
           id="dueDate"
           [min]="today"
         />
       </div>
     </div>
 
-    <button
-      type="button"
-      [disabled]="!item.task || !item.priority || !item.dueDate"
-      (click)="updateItem()"
-      class="btn btn-primary mt-2"
-    >
-      Update Task
-    </button>
+    <button type="button" (click)="updateItem()" class="btn btn-primary mt-2">Update Task</button>
     <!-- add confirm for navigating away without saving changes -->
   </form>
-  } @else {
-  <p>No item selected for update.</p>
-  }
 </div>
