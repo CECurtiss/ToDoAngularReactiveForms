@@ -18,7 +18,7 @@ export class UpdateTask implements OnInit {
     private router: Router
   ) {}
 
-  itemId!: number;
+  id!: number;
 
   taskForm: FormGroup = new FormGroup({
       task: new FormControl(''),
@@ -31,9 +31,9 @@ export class UpdateTask implements OnInit {
   today: string = new Date().toISOString().split('T')[0];
 
   ngOnInit(): void {
-    this.itemId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log("Retrieved Id", this.itemId);
-    this.retreiveItemById(this.itemId);
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log("Retrieved Id", this.id);
+    this.retreiveItemById(this.id);
   }
 
   // get Item by Id
@@ -58,6 +58,7 @@ export class UpdateTask implements OnInit {
   // update Item
   updateItem(): void {
     if(window.confirm("Are you sure you want to update this task?")) {
+      this.taskForm.value.id = this.id;
     console.log("Updating item:", this.taskForm.value);
     if (this.taskForm.valid) {
       this.itemService.updateItem(this.taskForm.value).subscribe({
